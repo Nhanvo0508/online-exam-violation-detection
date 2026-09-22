@@ -7,12 +7,11 @@ Compute MobileNetV2 embeddings for event snapshots.
 Usage examples:
 
 # Batch mode - compute embeddings for all events and write train_with_emb.json
-python mobilenetv2_embeddings.py --mode batch \
-  --events "C:\Users\anbin\PycharmProjects\TGMT-01\MachineLearning\tools\cv_events_with_crops.jsonl" \
-  --snapshots-dir "C:\Users\anbin\PycharmProjects\TGMT-01\app\snapshots" \
-  --out "C:\Users\anbin\PycharmProjects\TGMT-01\MachineLearning\tools\train_with_emb.json" \
-  --device cpu
-
+python MachineLearning/mobilenetv2_embeddings.py --mode batch \
+    --events "MachineLearning/tools/cv_events_with_crops.jsonl" \
+    --snapshots-dir "snapshots" \
+    --out "MachineLearning/tools/train_with_emb.json" \
+    --device cpu
 # Single image test (inference helper)
 python mobilenetv2_embeddings.py --mode single --img "C:\path\to\crop.jpg" --device cpu
 
@@ -33,9 +32,13 @@ import torchvision.models as models
 import sys
 
 # Default paths (feel free to override with CLI)
-DEFAULT_EVENTS = r"C:\Users\anbin\PycharmProjects\TGMT-01\MachineLearning\tools\cv_events_with_crops.jsonl"
-DEFAULT_SNAP_DIR = r"C:\Users\anbin\PycharmProjects\TGMT-01\app\snapshots"
-DEFAULT_OUT = r"C:\Users\anbin\PycharmProjects\TGMT-01\MachineLearning\tools\train_with_emb.json"
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent
+
+DEFAULT_EVENTS = PROJECT_ROOT / "tools" / "cv_events_with_crops.jsonl"
+DEFAULT_SNAP_DIR = PROJECT_ROOT.parent / "snapshots"
+DEFAULT_OUT = PROJECT_ROOT / "tools" / "train_with_emb.json"
 
 # Build model once
 def load_mobilenetv2(device="cpu"):
