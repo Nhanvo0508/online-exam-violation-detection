@@ -1,0 +1,11 @@
+numpy
+opencv-python
+Pillow
+torch
+torchvision
+ultralytics
+scikit-learn
+fastapi
+uvicorn
+lap
+websockets
