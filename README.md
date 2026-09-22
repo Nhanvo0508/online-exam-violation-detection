@@ -296,8 +296,6 @@ chạy.
 Trong quá trình phát triển, các ảnh snapshot có thể được sử dụng để kiểm
 tra detection và event.
 
-Không nhất thiết phải đưa toàn bộ ảnh runtime lên GitHub. Có thể giữ một
-số ảnh tiêu biểu phục vụ demo.
 
 ## 11. Quy trình hoạt động
 
